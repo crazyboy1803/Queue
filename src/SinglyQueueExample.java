@@ -21,6 +21,11 @@ public class SinglyQueueExample
             Scanner sc2 = new Scanner(System.in);
             int data = sc2.nextInt();
             
+            if(Front == -1)
+            {
+                Front = 0;
+            }
+            
             Rear = Rear + 1;
             ar[Rear] = data;
             System.out.println("Data Insert......");
@@ -28,7 +33,24 @@ public class SinglyQueueExample
     }
     void delete()
     {
-        
+        if(Front==-1 || Rear==-1)
+        {
+            System.out.println("Queue Empty");
+        }
+        else
+        {
+            if(Front == Rear)
+            {
+                System.out.println("Deleted :"+ar[Front]);
+                Front = -1;
+                Rear = -1;
+            }
+            else
+            {
+                System.out.println("Deleted :"+ar[Front]);
+                Front= Front + 1;                
+            }
+        }
     }
     void traverse()
     {
@@ -41,7 +63,7 @@ public class SinglyQueueExample
             System.out.println("..........singly queue..........");
             for(int i=Front;i<=Rear;i++)
             {
-                System.out.println(""+ar[i]);
+                System.out.print(" "+ar[i]);
             }
         }
     }
