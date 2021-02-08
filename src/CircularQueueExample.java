@@ -1,21 +1,93 @@
 import java.util.Scanner;
 public class CircularQueueExample 
 {
+    int ar[];
+    int Front,Rear;
     CircularQueueExample()
     {
-        
+        ar = new int[5];
+        Front=-1;
+        Rear=-1;
     }
     void insert()
     {
-        
+        if((Front == 0 && Rear == 4) || (Rear==Front-1))
+        {
+            System.out.println("Queue Full");
+        }
+        else
+        {
+            System.out.println("Enter data");
+            Scanner sc2 = new Scanner(System.in);
+            int data = sc2.nextInt();
+            
+            if(Front == -1)
+            {
+                Front=0;
+            }
+            if(Rear==4)
+            {
+                Rear=0;
+            }
+            else
+            {
+                Rear = Rear+1;
+            }
+            ar[Rear]=data;
+            System.out.println(".....Data Entered.....");
+        }
     }
     void delete()
     {
-        
+        if(Front == -1)
+        {
+            System.out.println("Queue already Empty");
+        }
+        else
+        {            
+            System.out.println("Deleted :"+ar[Front]);
+            if(Front==Rear)
+            {
+                Front=-1;
+                Rear=-1;
+            }
+            else if(Front==4)
+            {
+                Front=0;
+            }
+            else
+            {
+                Front=Front + 1; 
+            }
+        }
     }
     void traverse()
     {
-        
+        if(Front == -1 || Rear == -1)
+        {
+            System.out.println("Queue Empty");
+        }
+        else
+        {
+            if(Front < Rear)
+            {
+                for(int i = Front;i<=Rear;i++)
+                {
+                    System.out.print(" "+ar[i]);
+                }
+            }
+            else
+            {
+                for(int i=Front;i<=4;i++)
+                {
+                    System.out.print(" "+ar[i]);
+                }
+                for(int j=0;j<=Rear;j++)
+                {
+                    System.out.print(" "+ar[j]);
+                }
+            }
+        }
     }
     public static void main(String args[])
     {
